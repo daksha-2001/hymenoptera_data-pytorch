@@ -3,7 +3,7 @@ tqdm
 dvc
 pandas
 numpy
-mlflow
+mlflow==1.30.1
 argon2-cffi
 argon2-cffi-bindings
 attrs

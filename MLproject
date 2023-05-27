@@ -7,4 +7,12 @@ conda_env: conda.yaml
 
 entry_points:
   main:
-    command: "python main.py"
+    command: "python src/main.py"
+  data_collection:
+    parameters: 
+      config: {type: str,default: "configs/config.yaml"}
+    command: "python src/stage_01_data_collection.py --config={config}"
+  training:
+    command: "python src/stage_02_training.py"
+  testing:
+    command: "python src/stage_03_testing.py"

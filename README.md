@@ -1,5 +1,5 @@
-# Mlflow-project-template
-Mlflow project template
+# MLflow-Hymenoptera data classification using Pytorch
+MLflow project template
 
 ## STEPS -
 
@@ -26,10 +26,23 @@ source activate ./env
 pip install -r requirements.txt
 ```
 
-### STEP 05- Create conda.yml file -
-
+### STEP 05 - Create conda.yaml file -
 ```bash
 conda env export > conda.yaml
 ```
 
 ### STEP 06- commit and push the changes to the remote repository
+
+MLFlow Commands
+
+### Commands to run MLproject file
+```bash
+mlflow run . --no-conda
+```
+
+### run any specific entry point in MLproject file
+```bash
+mlflow run . -e get_data -P config=configs/your_config.yaml --no-conda
+```
+
+

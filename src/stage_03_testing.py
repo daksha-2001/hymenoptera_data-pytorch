@@ -63,6 +63,12 @@ def main(config_path):
 
     logging.info("Model evaluation done")
     cm=confusion_matrix(target,pred)
+
+    cm_string = '\n'.join(['\t'.join([str(cell) for cell in row]) for row in cm])
+
+    # Log the confusion matrix using logging.info()
+    logging.info(f"Confusion Matrix:\n{cm_string}")
+
     
     label_map=test_dataset.class_to_idx
 

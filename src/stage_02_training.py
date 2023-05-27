@@ -60,7 +60,10 @@ def main(config_path):
                                         transforms.ToTensor(),
                                         transforms.Normalize(mean,std)
     ])
-   
+    test_transform=transforms.Compose([transforms.Resize(tuple(img_size)),
+                                        transforms.ToTensor(),
+                                        transforms.Normalize(mean,std)
+    ])
     
 
     train_dataset=datasets.ImageFolder(train_path,train_transform)
@@ -83,7 +86,7 @@ def main(config_path):
         param.requires_grad=False
 
     df,total=count_params(model)
-    logging.info(f'Parameters count before modifying Classifier Layer: {total}\n {df.to_string()}')
+    logging.info(f'Parameters count after freezing parameters and before modifying Classifier Layer: {total}\n {df.to_string()}')
 
     model.classifier=nn.Sequential(nn.Linear(in_features=9216,out_features=100,bias=True),
                                nn.ReLU(inplace=True),
@@ -101,7 +104,7 @@ def main(config_path):
 
     loss=training(model=model,train_data_loader=train_data_loader,num_eopch=num_epoch,device=device,criterion=criterion,optimizer=optimizer)
 
-    logging.info(f'Training complete for {num_epoch} and loss is {loss}')
+    logging.info(f'Training complete for {num_epoch} epochs and loss is {loss}')
 
     create_directories(["hymenoptera_data\data\hymenoptera_data\models",])
 

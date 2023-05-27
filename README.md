@@ -1,5 +1,4 @@
 # MLflow-Hymenoptera data classification using Pytorch
-MLflow project template
 
 ## STEPS -
 
